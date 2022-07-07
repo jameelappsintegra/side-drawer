@@ -1,0 +1,25 @@
+.drawer-menu {
+  height: calc(100vh - 40px);
+  position: fixed;
+  background-color: white;
+  box-shadow: -4px 1px 5px rgb(0 0 0 / 50%);
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  max-width: 400px;
+  z-index: 200;
+  transform: translateX(-300px);
+  transition: transform 0.3s ease-out;
+}
+
+.drawer-menu.open {
+  transform: translateX(0);
+}
+.drawer-menu ul {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+.drawer-menu ul li {
+  padding: 0.5rem 1rem;
+}

@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Drawer from './components/Drawer';
+import Header from './components/Header';
+import Backdrop from './components/Backdrop';
 
 function App() {
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
+  const toggleHandler = (e: any) => {
+    e.preventDefault();
+    setSideDrawerOpen(!sideDrawerOpen)
+  }
+  const backdropClickHandler = () => {
+    setSideDrawerOpen(!sideDrawerOpen)
+  }
+  let backDrop;
+  let sideDrawer;
+
+  if (sideDrawerOpen) {
+    backDrop = <Backdrop click={backdropClickHandler} />
+    sideDrawer = <Drawer show={sideDrawerOpen} />
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Header toggleHandler={toggleHandler} />
+      {backDrop}
+      {sideDrawer}
     </div>
   );
 }
